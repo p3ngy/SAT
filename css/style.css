@@ -76,7 +76,8 @@ nav li a:hover {
 }
 
 .task {
-    background-color: #EEE;
+    flex-basis: 250px;
+    background-color: rgb(255, 250, 185);
     padding: 20px;
     margin: 10px;
 }
@@ -93,14 +94,14 @@ nav li a:hover {
 
 .task button {
     width: 100%;
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
+    border: 1px solid #ccc;
     cursor: pointer;
 }
   
 .task button:hover {
-    background-color: #111;
+    background-color: #eee;
 }
