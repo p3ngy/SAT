@@ -14,8 +14,7 @@
    * SAVE AND LOAD ARRAYS TO AND FROM FILE
    */
 
-  function saveToFile()
-  { //TODO - add events and timetable...
+  function saveToFile() { //TODO - add events and timetable...
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][] = $task->asArray();
 
@@ -29,8 +28,7 @@
     $tasksFile = null;
   }
 
-  function loadFromFile()
-  {
+  function loadFromFile() {
     $username = $_SESSION['username'];
     $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "r");
     $tasksFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
