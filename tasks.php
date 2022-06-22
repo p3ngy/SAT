@@ -10,7 +10,7 @@
     ?>
 
     <h1 id="greeting">Hello <?php echo $_SESSION["username"]; ?>!</h1>
-    <div class="tasks-containter">
+    <div class="tasks">
         <h3>New Task:</h3>
         <form method="get"> <!--TODO: placeholder for dates, validation for input formats  -->
             <label for="name">Name:</label>

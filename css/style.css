@@ -68,4 +68,32 @@ nav li a:hover {
     margin: 20px;
 }
 
-/* comment lol */
+.tasks {
+    width: 50%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #EEE;
+}
+
+.tasks input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.tasks button {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.tasks button:hover {
+    background-color: #111;
+}
