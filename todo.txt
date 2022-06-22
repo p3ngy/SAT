@@ -1,4 +1,0 @@
-{TO DO}
-1. CSS:
-    - grid for sticky notes
-    - sort by priority (classes in css, togle in php)
