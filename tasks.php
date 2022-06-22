@@ -4,7 +4,6 @@
 <!-- Page specific code goes here -->
 <?php
 if (isset($_GET["submit"])) {
-    // save date to file
     saveToFile();
 }
 ?>
@@ -37,7 +36,7 @@ if (isset($_GET["submit"])) {
 foreach ($_SESSION['tasks'] as $task) {
     echo '<div class="tasks"><pre>';
     print_r($task);
-    echo '<button name="remove-task">Remove</button>';
+    echo '<a href="functions\\delete_task.php?task='.array_search($task, $_SESSION['tasks']).'">Remove</a>';
     echo '</div></pre>';
 }
 ?>
