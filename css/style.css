@@ -68,14 +68,21 @@ nav li a:hover {
     margin: 20px;
 }
 
-.tasks {
-    width: 50%;
-    margin: 20px;
-    padding: 20px;
-    background-color: #EEE;
+.tasks-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10px;
+    align-items: flex-start;
 }
 
-.tasks input {
+.task {
+    background-color: #EEE;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* NEW TASK FORM */
+.task input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -84,7 +91,7 @@ nav li a:hover {
     box-sizing: border-box;
 }
 
-.tasks button {
+.task button {
     width: 100%;
     background-color: #333;
     color: white;
@@ -93,7 +100,7 @@ nav li a:hover {
     border: none;
     cursor: pointer;
 }
-
-.tasks button:hover {
+  
+.task button:hover {
     background-color: #111;
 }
