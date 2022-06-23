@@ -15,6 +15,20 @@
    * SAVE AND LOAD ARRAYS TO AND FROM FILE
    */
 
+  function editTask($taskIndex) {
+    $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
+    $_SESSION["tasks"][$taskIndex] = $task->asArray();
+
+    $username = $_SESSION['username'];
+    $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "w");
+    $tasksFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
+
+    foreach ($_SESSION['tasks'] as $task) {
+      $tasksFile->fputcsv($task);
+    }
+    $tasksFile = null;
+  }
+
   function saveToFile() { //TODO - add events and timetable...
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][] = $task->asArray();
