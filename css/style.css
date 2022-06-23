@@ -76,10 +76,11 @@ nav li a:hover {
 }
 
 .task {
-    flex-basis: 250px;
+    flex-basis: 275px;
     background-color: rgb(255, 250, 185);
     padding: 20px;
     margin: 10px;
+    box-shadow: 3px 5px 10px -3px #888;
 }
 
 /* NEW TASK FORM */
@@ -88,16 +89,18 @@ nav li a:hover {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
+    border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
 .task button {
-    width: 100%;
+    width: 47%;
     background-color: white;
     color: black;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 4px;
+    border-radius: 5px;
     border: 1px solid #ccc;
     cursor: pointer;
 }

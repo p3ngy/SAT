@@ -3,8 +3,8 @@
 
 <!-- Page specific code goes here -->
 <?php
-if (isset($_GET["edit"])) { editTask($_GET["taskIndex"]); }
-if (isset($_GET["submit"])) { saveToFile(); }
+    if (isset($_GET["edit"])) { editTask($_GET["taskIndex"]); }
+    if (isset($_GET["submit"])) { saveToFile(); }
 ?>
 
 <h1 id="greeting">Hello <?php echo $_SESSION["username"]; ?>!</h1>
@@ -17,7 +17,7 @@ if (isset($_GET["submit"])) { saveToFile(); }
             <input name="priority" id="priority" placeholder="Priority (low, med, high)" required><br>
             <input type="text" name="subject" id="subject" placeholder="Subject" required><br>
             <input type="text" name="notes" id="notes" placeholder="Notes" required><br>
-            <button type="submit" name="submit">Create new task</button>
+            <button type="submit" name="submit" style="width: 100%;">Create new task</button>
         </form>
     </div>
     <?php
@@ -35,7 +35,7 @@ if (isset($_GET["submit"])) { saveToFile(); }
                             echo '<input type="text" name="subject" id="subject" value="'.$task[3].'" required><br>';
                             echo '<input type="text" name="notes" id="notes" value="'.$task[4].'" required><br>';
                             echo '<input type="hidden" name="taskIndex" id="taskIndex" value="'.$taskIndex.'">';
-                            echo '<button type="submit" name="edit">Confirm</button>';
+                            echo '<button type="submit" name="edit" style="width: 100%;">Confirm</button>';
                         echo '</form>';
                     echo '</div>';
                 } else {
