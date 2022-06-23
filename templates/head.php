@@ -4,60 +4,46 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>MGSP <?php if (isset($title)) {
-                echo "| " . $title;
-              } ?></title>
-  <link rel="stylesheet" href="css\\style.css">
-  <?php
+    <meta charset="utf-8">
+    <title>MGSP <?php if (isset($title)) { echo "| " . $title; } ?></title>
+    <link rel="stylesheet" href="css\\style.css">
+    <?php
 
-  /**
-   * SAVE AND LOAD ARRAYS TO AND FROM FILE
-   */
-
-  function editTask($taskIndex) {
-    $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
-    $_SESSION["tasks"][$taskIndex] = $task->asArray();
-
-    $username = $_SESSION['username'];
-    $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "w");
-    $tasksFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
-
-    foreach ($_SESSION['tasks'] as $task) {
-      $tasksFile->fputcsv($task);
+    // SORT BY PRIORITY
+    function sortTasks() {
+        usort($_SESSION['tasks'], function ($a, $b) {
+            return $a[2] <=> $b[2];
+        });
+        saveToFile();
     }
-    $tasksFile = null;
-  }
 
-  function saveToFile() { //TODO - add events and timetable...
-    $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
-    $_SESSION["tasks"][] = $task->asArray();
+    //SAVE AND LOAD ARRAYS TO AND FROM FILE
+    function saveToFile() {
+        $username = $_SESSION['username'];
+        $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "w");
+        $tasksFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
 
-    $username = $_SESSION['username'];
-    $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "w");
-    $tasksFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
-
-    foreach ($_SESSION['tasks'] as $task) {
-      $tasksFile->fputcsv($task);
+        foreach ($_SESSION['tasks'] as $task) {
+            $tasksFile->fputcsv($task);
+        }
+        $tasksFile = null;
     }
-    $tasksFile = null;
-  }
 
-  function loadFromFile() {
-    $username = $_SESSION['username'];
-    $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "r");
-    $tasksFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
+    function loadFromFile() {
+        $username = $_SESSION['username'];
+        $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "r");
+        $tasksFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
 
-    while (!$tasksFile->eof()) {
-      foreach ($tasksFile as $row) {
-        $_SESSION["tasks"][] = $row;
-      }
+        while (!$tasksFile->eof()) {
+            foreach ($tasksFile as $row) {
+                $_SESSION["tasks"][] = $row;
+            }
+        }
+        $tasksFile = null;
     }
-    $tasksFile = null;
-  }
-  ?>
+    ?>
 </head>
 
 <body>
-  <div class="container">
-    <?php include('nav.php'); ?>
+    <div class="container">
+        <?php include('nav.php'); ?>

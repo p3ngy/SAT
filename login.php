@@ -53,7 +53,7 @@
 ?>
 
     <h3>Login</h3>
-    <form method="get">
+    <form method="$_GETpost">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" placeholder="username" required>
         <label for="password">Password:</label>

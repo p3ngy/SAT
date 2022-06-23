@@ -81,10 +81,16 @@ nav li a:hover {
     padding: 20px;
     margin: 10px;
     box-shadow: 3px 5px 10px -3px #888;
+    
+}
+
+.task:hover {
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 /* NEW TASK FORM */
-.task input {
+.task input, .task select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

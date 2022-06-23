@@ -1,9 +1,3 @@
 # TODO
-
-1. work on tasks.php
-    - sorting by priority
-        - add/remove classes in php and set styles/ordering in CSS (red outline)
-        
-    - input validation (priority - low, med, high)
-
+1. fix task bug with 1-priority duplication on reload
 2. calendar... yikes
