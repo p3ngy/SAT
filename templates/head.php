@@ -14,7 +14,6 @@
         usort($_SESSION['tasks'], function ($a, $b) {
             return $a[2] <=> $b[2];
         });
-        saveToFile();
     }
 
     //SAVE AND LOAD ARRAYS TO AND FROM FILE

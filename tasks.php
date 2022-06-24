@@ -3,17 +3,18 @@
 
 <!-- Page specific code goes here -->
 <?php
-sortTasks();
 
 if (isset($_GET["edit"])) {
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][$_GET["taskIndex"]] = $task->asArray();
+    sortTasks();
     saveToFile();
 }
 
 if (isset($_GET["submit"])) {
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][] = $task->asArray();
+    sortTasks();
     saveToFile();
 }
 ?>
