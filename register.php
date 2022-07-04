@@ -27,7 +27,7 @@
             $pw2 = $_GET['password2'];
 
             if ($pw1 != $pw2) {
-                $error = "passwords do not match";
+                $error = "Passwords do not match.";
             }
 
             if (empty($error)) {
@@ -38,7 +38,7 @@
                 foreach ($file as $user) {
                     if (!empty($user)) {
                         if (strcasecmp($user[0], $username) == 0) {
-                            $error = "username already exists";
+                            $error = "Username already exists.";
                             break;
                         }
                     }
@@ -73,14 +73,8 @@
         }
     ?>
 
-        <h3>Register</h3>
-        <?php 
-            if (!empty($error)) {
-                echo "<p class='error'>$error</p>";
-            }
-        ?>
-        
         <form>
+            <h3>Register</h3>
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" placeholder="username" required>
             <label for="password">Password:</label>
@@ -88,7 +82,13 @@
             <label for="password2">Re-enter password:</label>
             <input type="password" name="password2" id="password2" placeholder="re-enter password" required>
             <button type="submit" name="register">Register</button>
-
+            <br><br>
+            <p>Already have an account? <a href="index.php">Login</a> now!</p>
+            <?php 
+                if (!empty($error)) {
+                    echo "<br><p class='error'>$error</p>";
+                }
+            ?>
         </form>
     </div>
       <!-- End Page specific code -->

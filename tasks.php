@@ -19,10 +19,9 @@ if (isset($_GET["submit"])) {
 }
 ?>
 
-<h1 id="greeting">Hello <?php echo $_SESSION["username"]; ?>!</h1>
 <div class="tasks-container">
-    <div class="task" style="flex-basis: 400px;">
-        <h3>New Task:</h3>
+    <div class="task">
+        <h3 style="margin-bottom: 0.25em;">New Task:</h3>
         <form method="get">
             <input type="text" name="name" id="name" placeholder="Task Name" required><br>
             <input type="date" name="dueDate" id="dueDate" value="<?php echo date("Y-m-d"); ?>" required><br>
@@ -38,8 +37,12 @@ if (isset($_GET["submit"])) {
 
         if (isset($_GET['task'])) {
             if ($taskIndex == $_GET["task"]) {
-                echo '<div class="task" style="flex-basis: 400px">';
-                echo '<h3>Edit Task:</h3>';
+                if ($task[2] == 1) {
+                    echo '<div style="border: 3px solid red; border-radius: 5px;" class="task">';
+                } else {
+                    echo '<div class="task">';
+                }
+                echo '<h3 style="margin-bottom: 0.25em;">Edit Task:</h3>';
                 echo '<form method="get">';
                 echo '<input type="text" name="name" id="name" value="' . $task[0] . '" required><br>';
                 echo '<input type="date" name="dueDate" id="dueDate" value="' . $task[1] . '" required><br>';
@@ -51,7 +54,11 @@ if (isset($_GET["submit"])) {
                 echo '</form>';
                 echo '</div>';
             } else {
-                echo '<div class="task">';
+                if ($task[2] == 1) {
+                    echo '<div style="border: 3px solid red; border-radius: 5px;" class="task">';
+                } else {
+                    echo '<div class="task">';
+                }
                 echo '<h3>' . $task[0] . '</h3><br>';
                 echo '<p><em>Due date: </em>' . (new DateTime($task[1]))->format("d/m/y") . '</p><br>';
                 echo '<p id="priority"><em>Priority: </em>' . $task[2] . '</p><br>';

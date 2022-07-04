@@ -23,7 +23,7 @@
         $file = new SplFileObject("data\\users.csv");
         $file -> setFlags(SplFileObject::READ_CSV|SplFileObject::SKIP_EMPTY);
 
-        $error = "username or password not correct";
+        $error = "Username or password not correct.";
         foreach ($file as $user) {
             if (!empty($user)) {
                 if (strcasecmp($user[0], $username) == 0 && password_verify($pw, $user[1])) {
@@ -52,15 +52,15 @@
     }
 ?>
 
-    <h3>Login</h3>
     <form method="$_GETpost">
+        <h3>Login</h3>
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" placeholder="username" required>
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" placeholder="password" required>
         <button type="submit" name="login">Login</button>
+        <br><br>
+        <p>Don't have an account? <a href="register.php">Register</a> now!</p>
+        <?php if (!empty($error)) { echo "<br><p>".$error."</p>"; } ?>
     </form>
-    <?php if (!empty($error)) { echo "<p>".$error."</p>"; } ?>
-    <br>
-    <p>Don't have an account? <a href="register.php">register</a> now!</p>
 </div>
