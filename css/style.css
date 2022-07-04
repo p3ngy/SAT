@@ -14,6 +14,7 @@ nav {
     margin: 32px auto;
     padding: 16px;
     background-color: #444;
+    box-sizing: border-box;
     box-shadow: 3px 5px 10px -3px #000;
 }
 nav ul{
@@ -24,13 +25,7 @@ nav ul{
 nav li {
     float: left;
 }
-nav #title {
-    font-weight: bold;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-}
+
 nav li a {
     display: block;
     color: white;
@@ -38,8 +33,11 @@ nav li a {
     padding: 14px 16px;
     text-decoration: none;
 }
+
 nav li a:hover {
     background-color: #333;
+    border: 3px solid aqua;
+    border-style: hidden hidden solid hidden;
 }
 
 /* LOGIN & REGISTER */
@@ -48,7 +46,9 @@ nav li a:hover {
     margin: 32px auto;
     padding: 16px;
     background-color: #EEE;
-    box-shadow: 3px 5px 10px -3px #000;
+    border: 6px solid aqua;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 12px aqua, 3px 5px 10px -3px #000;
 }
 .login form, .register form {
     padding: 14px 16px;
@@ -115,6 +115,7 @@ nav li a:hover {
     padding: 1em;
     margin: 0.25em 0;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     cursor: pointer;
 }
   

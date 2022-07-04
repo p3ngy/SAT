@@ -38,7 +38,7 @@ if (isset($_GET["submit"])) {
         if (isset($_GET['task'])) {
             if ($taskIndex == $_GET["task"]) {
                 if ($task[2] == 1) {
-                    echo '<div style="border: 3px solid red; border-radius: 5px;" class="task">';
+                    echo '<div style="border: 5px solid red; border-radius: 5px;" class="task">';
                 } else {
                     echo '<div class="task">';
                 }
@@ -70,7 +70,7 @@ if (isset($_GET["submit"])) {
             }
         } else {
             if ($task[2] == 1) {
-                echo '<div style="border: 3px solid red; border-radius: 5px;" class="task">';
+                echo '<div style="border: 6px solid #ff173e; box-shadow: inset 0 0 12px #ff173e;" class="task">';
             } else {
                 echo '<div class="task">';
             }
