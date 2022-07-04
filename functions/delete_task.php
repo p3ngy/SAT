@@ -1,11 +1,6 @@
 <?php
 
 include("..\\app.php");
-echo '<pre>';
-print_r($_GET);
-print_r($_SESSION);
-echo '</pre>';
-
 // remove from SESSION array
 unset($_SESSION['tasks'][$_GET['task']]);
 

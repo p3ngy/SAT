@@ -16,6 +16,7 @@
         });
     }
 
+
     //SAVE AND LOAD ARRAYS TO AND FROM FILE
     function saveToFile() {
         $username = $_SESSION['username'];
