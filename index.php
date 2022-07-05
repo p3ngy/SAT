@@ -32,7 +32,6 @@
                     <p>And here\'s an inspirational quote because why not:</p>
                     <br>
                     <script type="text/javascript" src="https://www.brainyquote.com/link/quotebr.js"></script>
-                    <small><i><a href="/quote_of_the_day" target="_blank" rel="nofollow">more Quotes</a></i></small>
                 </div>
                 ';
             }

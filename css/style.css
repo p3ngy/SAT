@@ -69,23 +69,25 @@ nav .icon {
 .home-container {
     width: 67%;
     margin: auto auto 32px auto;
-    display: block;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
-@media screen and (min-width: 960px) {
+ @media screen and (max-width: 960px) {
     .home-container {
-        display: grid;
-        grid-template-columns: 33% auto;
-        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    .login, .home {
-        margin: 0 !important;
+    .sidebar {
+        margin-right: -16px;
+        margin-bottom: 16px;
     }
 }
 
 .home {
-    /* center vert */
     padding: 32px;
+    flex-basis: 400px;
+    flex-grow: 1;
 }
 
 .home .links {
@@ -101,7 +103,10 @@ nav .icon {
 
 .sidebar {
     background-color: rgb(255, 250, 185);
+    flex-basis: 325px;
+    height: 325px;
     padding: 24px;
+    margin-right: 16px;
     position: relative;
     box-sizing: border-box;
     box-shadow: 3px 5px 10px -3px #000;
@@ -110,15 +115,15 @@ nav .icon {
 
 /* LOGIN & REGISTER */
 .login, .register, .home {
+    flex-basis: 375px;
+    flex-grow: 1;
     padding: 24px;
     background-color: #EEE;
     border: 6px solid aqua;
     box-sizing: border-box;
     box-shadow: inset 0 0 12px aqua, 3px 5px 10px -3px #000;
 }
-.login, .home {
-    margin: 16px 0;
-}
+
 .register {
     width: 67%;
     margin: auto;
