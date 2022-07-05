@@ -78,17 +78,25 @@ nav .icon {
         grid-template-columns: 33% auto;
         gap: 16px;
     }
-    .login {
+    .login, .home {
         margin: 0 !important;
     }
 }
 
-.login, .register, .footer {
-    padding: 16px;
-    background-color: #EEE;
-    border: 6px solid aqua;
-    box-sizing: border-box;
-    box-shadow: inset 0 0 12px aqua, 3px 5px 10px -3px #000;
+.home {
+    /* center vert */
+    padding: 32px;
+}
+
+.home .links {
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    background-color: #333;
+}
+
+.home .links:hover {
+    background-color: #222;
 }
 
 .sidebar {
@@ -99,22 +107,21 @@ nav .icon {
     box-shadow: 3px 5px 10px -3px #000;
 }
 
-.footer {
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
 
 /* LOGIN & REGISTER */
-.login {
+.login, .register, .home {
+    padding: 24px;
+    background-color: #EEE;
+    border: 6px solid aqua;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 12px aqua, 3px 5px 10px -3px #000;
+}
+.login, .home {
     margin: 16px 0;
 }
 .register {
     width: 67%;
     margin: auto;
-}
-.login form, .register form {
-    padding: 14px 16px;
 }
 .login input, .register input {
     width: 100%;
@@ -159,7 +166,7 @@ nav .icon {
     margin: 12px;
     box-sizing: border-box;
     position: relative;
-    box-shadow: 3px 5px 10px -3px #000;
+    box-shadow: 3px 5px 10px -3px #000, -3px -5px 10px #444;
 }
 
 /* NEW TASK FORM */
@@ -181,8 +188,8 @@ nav .icon {
 }
 
 .task #icons button {
-    background: none;
     color: #333;
+    background: none;
     padding: 8px;
     border: 0;
 }
@@ -218,8 +225,8 @@ nav .icon {
     right: 0;
     bottom: 0;
     position: absolute;
-    border-bottom: 48px solid #222;
-    border-left: 48px solid transparent;
+    border-bottom: 32px solid #222;
+    border-left: 32px solid transparent;
 }
 
 /* SCROLLBARRRR */

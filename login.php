@@ -46,7 +46,7 @@
 
             loadFromFile();
 
-            header("Location: tasks.php");
+            header("Location: index.php");
             exit;
         }
     }
