@@ -68,6 +68,7 @@ if (isset($_GET["submit"])) {
                 echo '<a href="tasks.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
                 echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
                 echo '</div>';
+                echo '<div id="triangle"></div>';
                 echo '</div>';
             }
         } else {
@@ -85,6 +86,7 @@ if (isset($_GET["submit"])) {
             echo '<a href="tasks.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
             echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
             echo '</div>';
+            echo '<div id="triangle"></div>';
             echo '</div>';
         }
     }
