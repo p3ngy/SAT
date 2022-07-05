@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <title>MGSP <?php if (isset($title)) { echo "| " . $title; } ?></title>
     <link rel="stylesheet" href="css\\style.css">
+    <script src="https://kit.fontawesome.com/dace878f3d.js" crossorigin="anonymous"></script>
     <?php
 
     // SORT BY PRIORITY

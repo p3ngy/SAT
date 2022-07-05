@@ -24,11 +24,11 @@ if (isset($_GET["submit"])) {
         <h3 style="margin-bottom: 0.25em;">New Task:</h3>
         <form method="get">
             <input type="text" name="name" id="name" placeholder="Task Name" required><br>
-            <input type="date" name="dueDate" id="dueDate" value="<?php echo date("Y-m-d"); ?>" required><br>
+            <input type="text" name="dueDate" id="dueDate" placeholder="Due Date" onfocus="(this.type='date')"><br>
             <input type="number" name="priority" id="priority" min="1" max="5" placeholder="Priority (1 - 5)" <br>
             <input type="text" name="subject" id="subject" placeholder="Subject" required><br>
             <input type="text" name="notes" id="notes" placeholder="Notes" required><br>
-            <button type="submit" name="submit" style="width: 100%;">Create new task</button>
+            <button type="submit" name="submit" id="newTask">Create new task</button>
         </form>
     </div>
     <?php
@@ -50,7 +50,7 @@ if (isset($_GET["submit"])) {
                 echo '<input type="text" name="subject" id="subject" value="' . $task[3] . '" required><br>';
                 echo '<input type="text" name="notes" id="notes" value="' . $task[4] . '" required><br>';
                 echo '<input type="hidden" name="taskIndex" id="taskIndex" value="' . $taskIndex . '">';
-                echo '<button type="submit" name="edit" style="width: 100%;">Confirm</button>';
+                echo '<button type="submit" name="edit" id="newTask">Confirm</button>';
                 echo '</form>';
                 echo '</div>';
             } else {
@@ -64,8 +64,10 @@ if (isset($_GET["submit"])) {
                 echo '<p id="priority"><em>Priority: </em>' . $task[2] . '</p><br>';
                 echo '<p><em>Subject: </em>' . $task[3] . '</p><br>';
                 echo '<p><em>Notes: </em>' . $task[4] . '</p><br>';
-                echo '<a href="tasks.php?task=' . $taskIndex . '"><button>Edit</button></a>';
-                echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button>Remove</button></a>';
+                echo '<div id="icons">';
+                echo '<a href="tasks.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
+                echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
+                echo '</div>';
                 echo '</div>';
             }
         } else {
@@ -79,8 +81,10 @@ if (isset($_GET["submit"])) {
             echo '<p id="priority"><em>Priority: </em>' . $task[2] . '</p><br>';
             echo '<p><em>Subject: </em>' . $task[3] . '</p><br>';
             echo '<p><em>Notes: </em>' . $task[4] . '</p><br>';
-            echo '<a href="tasks.php?task=' . $taskIndex . '"><button>Edit</button></a>';
-            echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button>Remove</button></a>';
+            echo '<div id="icons">';
+            echo '<a href="tasks.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
+            echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
+            echo '</div>';
             echo '</div>';
         }
     }
