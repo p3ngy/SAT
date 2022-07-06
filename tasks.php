@@ -11,7 +11,7 @@ if (isset($_GET["edit"])) {
     saveToFile();
 }
 
-if (isset($_GET["submit"])) {
+if (isset($_GET["create"])) {
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][] = $task->asArray();
     sortTasks();
@@ -28,7 +28,7 @@ if (isset($_GET["submit"])) {
             <input type="number" name="priority" id="priority" min="1" max="5" placeholder="Priority (1 - 5)" <br>
             <input type="text" name="subject" id="subject" placeholder="Subject" required><br>
             <input type="text" name="notes" id="notes" placeholder="Notes" required><br>
-            <button type="submit" name="submit" id="newTask">Create new task</button>
+            <button type="create" name="create" id="newTask">Create new task</button>
         </form>
     </div>
     <?php
