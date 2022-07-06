@@ -12,7 +12,7 @@ if (isset($_GET["delete"])) {
 }
 
 // EDIT TASK
-if (isset($_GET["changes"])) {
+if (isset($_GET["change"])) {
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][$_GET["taskIndex"]] = $task->asArray();
     sortTasks();
