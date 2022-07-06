@@ -3,16 +3,13 @@
 <?php
     include("app.php");
     if(isset($_GET['login'])) {
-        /**
-         * get inputs
-         * check un/pw combo exist
-         * slog em in
-         */
 
         /**
-         * user ile format,
-         * username
-         * password
+         * LOGIN
+         * get username and password
+         * check if username exists
+         * check password hash
+         * log user in
          */
 
         $error = null;
@@ -37,7 +34,7 @@
 
 
         if (empty($error)) {
-            //log em in
+            //log em in, initiate session variables
             $_SESSION["username"] = $username;
 
             $_SESSION["tasks"] = [];

@@ -1,4 +1,6 @@
 <?php 
+    // INITIATE AND HANDLE SESSIONS
+    
     if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
     }

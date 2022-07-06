@@ -4,13 +4,22 @@
 <!-- Page specific code goes here -->
 <?php
 
-if (isset($_GET["edit"])) {
+// DELETE TASK
+if (isset($_GET["delete"])) {
+    unset($_SESSION['tasks'][$_GET['task']]);
+    sortTasks();
+    saveToFile();
+}
+
+// EDIT TASK
+if (isset($_GET["changes"])) {
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][$_GET["taskIndex"]] = $task->asArray();
     sortTasks();
     saveToFile();
 }
 
+// CREATE TASK
 if (isset($_GET["create"])) {
     $task = new Task($_GET['name'], $_GET['dueDate'], $_GET['priority'], $_GET['subject'], $_GET['notes']);
     $_SESSION["tasks"][] = $task->asArray();
@@ -35,9 +44,10 @@ if (isset($_GET["create"])) {
     foreach ($_SESSION['tasks'] as $task) {
         $taskIndex = array_search($task, $_SESSION['tasks']);
 
-        if (isset($_GET['task'])) {
-            if ($taskIndex == $_GET["task"]) {
-                if ($task[2] == 1) {
+        if (isset($_GET['edit'])) { 
+            // runs if user wants to edit a task
+            if ($taskIndex == $_GET["task"]) { // the task being edited
+                if ($task[2] == 1) { // red border for high priority tasks
                     echo '<div style="border: 6px solid #ff173e; box-shadow: inset 0 0 12px #ff173e;" class="task">';
                 } else {
                     echo '<div class="task">';
@@ -50,10 +60,10 @@ if (isset($_GET["create"])) {
                 echo '<input type="text" name="subject" id="subject" value="' . $task[3] . '" required><br>';
                 echo '<input type="text" name="notes" id="notes" value="' . $task[4] . '" required><br>';
                 echo '<input type="hidden" name="taskIndex" id="taskIndex" value="' . $taskIndex . '">';
-                echo '<button type="submit" name="edit" id="newTask">Confirm</button>';
+                echo '<button type="submit" name="change" id="newTask">Confirm</button>';
                 echo '</form>';
                 echo '</div>';
-            } else {
+            } else { // all the other tasks
                 if ($task[2] == 1) {
                     echo '<div style="border: 6px solid #ff173e; box-shadow: inset 0 0 12px #ff173e;" class="task">';
                 } else {
@@ -65,13 +75,13 @@ if (isset($_GET["create"])) {
                 echo '<p><em>Subject: </em>' . $task[3] . '</p><br>';
                 echo '<p><em>Notes: </em>' . $task[4] . '</p><br>';
                 echo '<div id="icons">';
-                echo '<a href="tasks.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
-                echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
+                echo '<a href="tasks.php?task=' . $taskIndex . '&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
+                echo '<a href="tasks.php?task=' . $taskIndex . '&delete="><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
                 echo '</div>';
                 echo '<div id="triangle"></div>';
                 echo '</div>';
             }
-        } else {
+        } else { // runs if no edits are being made
             if ($task[2] == 1) {
                 echo '<div style="border: 6px solid #ff173e; box-shadow: inset 0 0 12px #ff173e;" class="task">';
             } else {
@@ -83,8 +93,8 @@ if (isset($_GET["create"])) {
             echo '<p><em>Subject: </em>' . $task[3] . '</p><br>';
             echo '<p><em>Notes: </em>' . $task[4] . '</p><br>';
             echo '<div id="icons">';
-            echo '<a href="tasks.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
-            echo '<a href="functions\\delete_task.php?task=' . $taskIndex . '"><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
+            echo '<a href="tasks.php?task=' . $taskIndex . '&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
+            echo '<a href="tasks.php?task=' . $taskIndex . '&delete="><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
             echo '</div>';
             echo '<div id="triangle"></div>';
             echo '</div>';
