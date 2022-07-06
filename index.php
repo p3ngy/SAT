@@ -16,7 +16,7 @@
             <div id="triangle"></div>
         </div>
         <?php 
-            if (empty($_SESSION['username'])) {
+            if (empty($_SESSION['username'])) { // if logged in
                 include("login.php"); 
             } else {
                 echo 

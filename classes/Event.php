@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * EVENT
+ * this class contains one calendar event.
+ * it has the properties; name, start datetime, end datetime, calegory and notes.
+ * its functions are exporting the class as an array.
+ */
+
 class Event {
     // properties
     public $name;
@@ -8,6 +15,7 @@ class Event {
     public $category;
     public $notes;
 
+    // methods
     public function __construct($name, $startDateTime, $endDateTime, $category, $notes) {
         $this->name = $name;
         $this->startDateTime = $startDateTime;
@@ -16,6 +24,7 @@ class Event {
         $this->notes = $notes;
     }
 
+    // asArray() : exports the class properties as an array
     public function asArray() {
         $array = [
             $this->name,

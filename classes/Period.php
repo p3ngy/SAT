@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * PERIOD
+ * this class is one period in the timetable
+ * its atributes are; subject, start time, end time, day, classroom and teacher.
+ * functions are exporting as an array
+ */
+
 class Period {
     //properties
     public $subject;
@@ -19,6 +26,7 @@ class Period {
         $this->teacher = $teacher;
     }
 
+    // asArray() : exports the class properties as an array
     public function asArray() {
         $array = [
             $this->subject,

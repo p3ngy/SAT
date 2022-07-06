@@ -9,6 +9,7 @@
 
         if(isset($_GET['register'])) {
             /**
+             * REGISTER
              * get inputs
              * check p1 = p2
              * check if already registered

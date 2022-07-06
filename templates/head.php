@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/dace878f3d.js" crossorigin="anonymous"></script>
     <?php
 
-    // SORT BY PRIORITY
+    // SORT TASKS BY PRIORITY
     function sortTasks() {
         usort($_SESSION['tasks'], function ($a, $b) {
             return $a[2] <=> $b[2];
@@ -20,7 +20,7 @@
     }
 
 
-    //SAVE AND LOAD ARRAYS TO AND FROM FILE
+    // SAVE AND LOAD ARRAYS TO AND FROM CSV FILES
     function saveToFile() {
         $username = $_SESSION['username'];
         $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "w");

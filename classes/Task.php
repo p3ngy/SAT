@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * TASK
+ * this class represents one individual task.
+ * it contains the atuributes; name, due date, priority, subject and notes.
+ * methods include returning the class as an array.
+ */
+
 class Task {
     // properties
     public $name;
@@ -17,6 +24,7 @@ class Task {
         $this->notes = $notes;
     }
 
+    // asArray() : exports the class properties as an array
     public function asArray() {
         $array = [
             $this->name,
@@ -27,6 +35,4 @@ class Task {
         ];
         return $array;
     }
-
-    // more classes
 }
