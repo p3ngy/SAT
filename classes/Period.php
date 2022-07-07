@@ -17,13 +17,13 @@ class Period {
     public $teacher;
     
     //methods
-    public function __construct($subject, $startTime, $endTime, $day, $classroom, $teacher) {
-        $this->subject = $subject;
-        $this->startTime = $startTime;
-        $this->endTime = $endTime;
-        $this->day = $day;
-        $this->classroom = $classroom;
-        $this->teacher = $teacher;
+    public function __construct($data) {
+        $this->subject = $data["subject"];
+        $this->startTime = $data["startTime"];
+        $this->endTime = $data["endTime"];
+        $this->day = $data["day"];
+        $this->classroom = $data["classroom"];
+        $this->teacher = $data["teacher"];
     }
 
     // asArray() : exports the class properties as an array

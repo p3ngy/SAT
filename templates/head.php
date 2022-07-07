@@ -30,6 +30,24 @@
             $tasksFile->fputcsv($task);
         }
         $tasksFile = null;
+
+        $eventsFile = new SplFileObject("data\\users\\$username\\events.csv", "w");
+        $eventsFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
+
+        foreach ($_SESSION['events'] as $event) {
+            $eventsFile->fputcsv($event);
+        }
+        $eventsFile = null;
+
+        $timetableFile = new SplFileObject("data\\users\\$username\\timetable.csv", "w");
+        $timetableFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
+
+        foreach ($_SESSION['timetable'] as $period) {
+            $timetableFile->fputcsv($period);
+        }
+        $timetableFile = null;
+
+        
     }
 
     function loadFromFile() {
@@ -43,6 +61,26 @@
             }
         }
         $tasksFile = null;
+
+        $eventsFile = new SplFileObject("data\\users\\$username\\events.csv", "r");
+        $eventsFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
+
+        while (!$eventsFile->eof()) {
+            foreach ($eventsFile as $row) {
+                $_SESSION["events"][] = $row;
+            }
+        }
+        $eventsFile = null;
+
+        $timetableFile = new SplFileObject("data\\users\\$username\\timetable.csv", "r");
+        $timetableFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
+
+        while (!$timetableFile->eof()) {
+            foreach ($timetableFile as $row) {
+                $_SESSION["timetable"][] = $row;
+            }
+        }
+        $timetableFile = null;
     }
     ?>
 </head>

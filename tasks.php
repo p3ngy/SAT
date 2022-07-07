@@ -37,7 +37,7 @@ if (isset($_GET["create"])) {
             <input type="number" name="priority" id="priority" min="1" max="5" placeholder="Priority (1 - 5)" <br>
             <input type="text" name="subject" id="subject" placeholder="Subject" required><br>
             <input type="text" name="notes" id="notes" placeholder="Notes" required><br>
-            <button type="create" name="create" id="newTask">Create new task</button>
+            <button type="submit" name="create" id="newTask">Create new task</button>
         </form>
     </div>
     <?php

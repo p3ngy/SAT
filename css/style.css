@@ -234,6 +234,65 @@ nav .icon {
     border-left: 32px solid transparent;
 }
 
+/* TIMETABLE */
+/* .timetable-container {
+    margin: 32px;
+    display: flex;
+    border: 1px solid red;
+}
+
+.input {
+    flex-basis: 325px;
+    height: 325px;
+    background-color: rgb(255, 250, 185);
+    padding: 24px;
+    margin: 12px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 3px 5px 10px -3px #000;
+}
+
+.input input {
+    width: 100%;
+    margin: 0.25em 0;
+    padding: 0.5em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-style: hidden hidden solid hidden;
+    box-sizing: border-box;
+    background-color: #FFF;
+}
+
+.input button {
+    width: 277px;
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    margin: 0.25em 0;
+    border: none;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 24px;
+}
+  
+.input button:hover {
+    background-color: #222;
+}
+
+.output {
+    margin: 12px;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+}
+
+.output .column .period {
+    border: 1px solid red;
+    padding: 16px;
+} */
+
+
+
+
 /* SCROLLBARRRR */
 ::-webkit-scrollbar {
     width: 16px;
