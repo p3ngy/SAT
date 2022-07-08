@@ -24,10 +24,11 @@
                 <div class="home">
                     <h3>Hi there, '.$_SESSION['username'].'!</h3>
                     <br>
-                    <p>View your tasks or calendar here: </p>
+                    <p>View your tasks, calendar, and timetable here: </p>
                     <br>
                     <a href="tasks.php" class="links">tasks</a>
                     <a href="calendar.php" class="links">calendar</a>
+                    <a href="timetable.php" class="links">timetable</a>
                     <br><br><br>
                     <p>And here\'s an inspirational quote because why not:</p>
                     <br>

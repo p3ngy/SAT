@@ -12,6 +12,7 @@ class Period {
     public $subject;
     public $startTime;
     public $endTime;
+    public $period;
     public $day; // day 1-10 with the 14day timetable
     public $classroom;
     public $teacher;
@@ -21,6 +22,7 @@ class Period {
         $this->subject = $data["subject"];
         $this->startTime = $data["startTime"];
         $this->endTime = $data["endTime"];
+        $this->period = $data["period"];
         $this->day = $data["day"];
         $this->classroom = $data["classroom"];
         $this->teacher = $data["teacher"];
@@ -32,6 +34,7 @@ class Period {
             $this->subject,
             $this->startTime,
             $this->endTime,
+            $this->period,
             $this->day,
             $this->classroom,
             $this->teacher

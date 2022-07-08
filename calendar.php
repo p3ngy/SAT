@@ -10,12 +10,6 @@
             saveToFile();
         }
 
-        if (isset($_GET['createPeriod'])) {
-            $period = new Period($_GET['subject'], $_GET['startTime'], $_GET['endTime'], $_GET['day'], $_GET['classroom'], $_GET["teacher"]);
-            $_SESSION['timetable'][] = $period->asArray();
-            saveToFile();
-        }
-
         $year = [];
         $date = strtotime(date("Y")."-01-01");
 
@@ -49,7 +43,7 @@
 
         <?php 
             echo "<pre style='color:white;'>";
-            print_r($_SESSION["events"]);
+            // print_r($_SESSION["events"]);
             print_r($year);
             echo "</pre>";
         ?>

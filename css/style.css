@@ -73,7 +73,7 @@ nav .icon {
     flex-wrap: nowrap;
 }
 
- @media screen and (max-width: 960px) {
+@media screen and (max-width: 960px) {
     .home-container {
         flex-wrap: wrap;
         justify-content: center;
@@ -235,63 +235,37 @@ nav .icon {
 }
 
 /* TIMETABLE */
-/* .timetable-container {
-    margin: 32px;
+.timetable {
+    margin: 16px;
     display: flex;
-    border: 1px solid red;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
-.input {
-    flex-basis: 325px;
-    height: 325px;
-    background-color: rgb(255, 250, 185);
+.week {
+    margin: 16px;
     padding: 24px;
-    margin: 12px;
+    border: 6px solid aqua;
     box-sizing: border-box;
-    position: relative;
-    box-shadow: 3px 5px 10px -3px #000;
+    box-shadow: inset 0 0 12px aqua, 3px 5px 10px -3px #000;
+    background-color: #eee;
+    display: grid;
+    column-gap: 12px;
+    grid-template-columns: repeat(5, 1fr);
 }
 
-.input input {
-    width: 100%;
-    margin: 0.25em 0;
-    padding: 0.5em;
-    display: inline-block;
+.timetable .row {
+    height: 100px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-style: hidden hidden solid hidden;
     box-sizing: border-box;
-    background-color: #FFF;
 }
 
-.input button {
-    width: 277px;
-    background-color: #333;
-    color: white;
-    padding: 1em;
-    margin: 0.25em 0;
-    border: none;
-    box-sizing: border-box;
-    position: absolute;
-    bottom: 24px;
+@media screen and (max-width: 960px) {
+    .timetable .row {
+        height: 125px;
+    }
 }
-  
-.input button:hover {
-    background-color: #222;
-}
-
-.output {
-    margin: 12px;
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-}
-
-.output .column .period {
-    border: 1px solid red;
-    padding: 16px;
-} */
-
-
-
 
 /* SCROLLBARRRR */
 ::-webkit-scrollbar {
