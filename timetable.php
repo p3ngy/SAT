@@ -24,37 +24,45 @@
         </div> -->
 
         <div class="timetable">
-            <div class="week">
-                <?php
-                    for ($i = 0; $i < 5; $i++) {
-                        echo '<div class="col day'.($i + 1).'">';
-                        for ($j = 0; $j < 6; $j++) {
-                            echo '<div class="row period'.($j + 1).'">';
-                            echo '<h4>'.$_SESSION['timetable'][$j + 6 * $i][0].'</h4>';
-                            echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][1].' to '. $_SESSION['timetable'][$j + 6 * $i][2].'</p>';
-                            echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][5].'</p>';
-                            echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][6].'</p>';
-                            echo '</div>';
-                        }
-                        echo '</div>';
-                    }
-                ?>
+            <div class="container">
+                <h3>Week 1</h3>
+                <div class="week">
+                        <?php
+                            for ($i = 0; $i < 5; $i++) {
+                                echo '<div class="col day'.($i + 1).'">';
+                                echo '<p class="title">Day '.($i + 1).'</p>';
+                                for ($j = 0; $j < 6; $j++) {
+                                    echo '<div class="row period'.($j + 1).'">';
+                                    echo '<h4>'.$_SESSION['timetable'][$j + 6 * $i][0].'</h4>';
+                                    echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][1].' to '. $_SESSION['timetable'][$j + 6 * $i][2].'</p>';
+                                    echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][5].'</p>';
+                                    echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][6].'</p>';
+                                    echo '</div>';
+                                }
+                                echo '</div>';
+                            }
+                        ?>
+                </div>
             </div>
-            <div class="week">
-                <?php
-                    for ($i = 5; $i < 10; $i++) {
-                        echo '<div class="col day'.($i + 1).'">';
-                        for ($j = 0; $j < 6; $j++) {
-                            echo '<div class="row period'.($j + 1).'">';
-                            echo '<h4>'.$_SESSION['timetable'][$j + 6 * $i][0].'</h4>';
-                            echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][1].' to '. $_SESSION['timetable'][$j + 6 * $i][2].'</p>';
-                            echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][5].'</p>';
-                            echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][6].'</p>';
+            <div class="container">
+                <h3>Week 2</h3>
+                <div class="week">
+                    <?php
+                        for ($i = 5; $i < 10; $i++) {
+                            echo '<div class="col day'.($i + 1).'">';
+                            echo '<p class="title">Day '.($i + 1).'</p>';
+                            for ($j = 0; $j < 6; $j++) {
+                                echo '<div class="row period'.($j + 1).'">';
+                                echo '<h4>'.$_SESSION['timetable'][$j + 6 * $i][0].'</h4>';
+                                echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][1].' to '. $_SESSION['timetable'][$j + 6 * $i][2].'</p>';
+                                echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][5].'</p>';
+                                echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][6].'</p>';
+                                echo '</div>';
+                            }
                             echo '</div>';
                         }
-                        echo '</div>';
-                    }
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
     </div>

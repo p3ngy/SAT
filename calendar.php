@@ -10,6 +10,7 @@
             saveToFile();
         }
 
+        // CREATE YEAR
         $year = [];
         $date = strtotime(date("Y")."-01-01");
 
@@ -29,24 +30,46 @@
     ?>
 
     
-            <div class="events-container">
-                <h3>New Event:</h3>
-                <form method="get">
-                    <input type="text" name="name" id="name" placeholder="Task Name"><br>
-                    <input type="datetime-local" name="startDateTime" id="startDateTime"><br>
-                    <input type="datetime-local" name="endDateTime" id="EndDateTime"> <br>
-                    <input type="text" name="category" id="category" placeholder="category"><br>
-                    <input type="text" name="notes" id="notes" placeholder="notes"><br>
-                    <button type="create" name="createEvent" id="newEvent">Create new event</button>
-                </form>
-            </div>
+    <!-- <div class="events-container">
+        <h3>New Event:</h3>
+        <form method="get">
+            <input type="text" name="name" id="name" placeholder="Task Name"><br>
+            <input type="datetime-local" name="startDateTime" id="startDateTime"><br>
+            <input type="datetime-local" name="endDateTime" id="EndDateTime"> <br>
+            <input type="text" name="category" id="category" placeholder="category"><br>
+            <input type="text" name="notes" id="notes" placeholder="notes"><br>
+            <button type="create" name="createEvent" id="newEvent">Create new event</button>
+        </form>
+    </div> -->
 
+    <div class="calendar">
         <?php 
-            echo "<pre style='color:white;'>";
-            // print_r($_SESSION["events"]);
-            print_r($year);
-            echo "</pre>";
+            // for ($m = 1; $m <= 12; $m++) {
+            //     echo '<div class="month">';
+            //     $month = DateTime::createFromFormat('m', $m);
+            //     echo $month->format("F");
+            //     echo '</div>';
+            // }
         ?>
+
+        <div class="month">
+            <?php
+                for ($d = 1; $d <= 7; $d++) {
+                    echo '<div class="col day">';
+                    echo "day $d";
+                    echo '</div>';
+                }
+            ?>
+        </div>
+    </div>
+
+
+    <?php 
+        // echo "<pre style='color:white;'>";
+        // // print_r($_SESSION["events"]);
+        // print_r($year);
+        // echo "</pre>";
+    ?>
 
     <!-- End Page specific code -->
 
