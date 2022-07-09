@@ -1,6 +1,7 @@
 <?php include("classes\\Task.php"); ?>
 <?php include("classes\\Period.php"); ?>
 <?php include("classes\\Event.php"); ?>
+<?php include("classes\\Calendar.php"); ?>
 <?php include("app.php"); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
