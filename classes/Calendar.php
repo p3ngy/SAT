@@ -6,17 +6,17 @@
  */
 class Calendar {
 
-    public $active_year, $active_month, $active_day;
+    public $activeYear, $activeMonth, $activeDay;
     public $events = [];
 
     public function __construct($date = null) {
-        $this->active_year = $date != null ? date('Y', strtotime($date)) : date('Y');
-        $this->active_month = $date != null ? date('m', strtotime($date)) : date('m');
-        $this->active_day = $date != null ? date('d', strtotime($date)) : date('d');
+        $this->activeYear = $date != null ? date('Y', strtotime($date)) : date('Y');
+        $this->activeMonth = $date != null ? date('m', strtotime($date)) : date('m');
+        $this->activeDay = $date != null ? date('d', strtotime($date)) : date('d');
     }
 
-    public function addEvent($name, $date, $duration = 1, $category) {
-        $this->events[] = [$name, $date, $duration, $category];
+    public function addEvent($name, $date, $duration = 1, $category, $notes, $type) {
+        $this->events[] = [$name, $date, $duration, $category, $notes, $type];
     }
 }
 ?>

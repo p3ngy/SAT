@@ -25,6 +25,7 @@ if (isset($_GET["create"])) {
     $_SESSION["tasks"][] = $task->asArray();
     sortTasks();
     saveToFile();
+    header("location: tasks.php");
 }
 ?>
 
