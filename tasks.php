@@ -51,7 +51,7 @@ if (isset($_GET["create"])) {
             // runs if user wants to edit a task
             if ($taskIndex == $_GET["task"]) { // the task being edited
                 if ($task[2] == 1) { // red border for high priority tasks
-                    echo '<div style="border: 6px solid #ff173e; box-shadow: inset 0 0 12px #ff173e;" class="task">';
+                    echo '<div class="task priority">';
                 } else {
                     echo '<div class="task">';
                 }
@@ -68,7 +68,7 @@ if (isset($_GET["create"])) {
                 echo '</div>';
             } else { // all the other tasks
                 if ($task[2] == 1) {
-                    echo '<div style="border: 6px solid #ff173e; box-shadow: inset 0 0 12px #ff173e;" class="task">';
+                    echo '<div class="task priority">';
                 } else {
                     echo '<div class="task">';
                 }
@@ -86,7 +86,7 @@ if (isset($_GET["create"])) {
             }
         } else { // runs if no edits are being made
             if ($task[2] == 1) {
-                echo '<div style="border: 6px solid #ff173e; box-shadow: inset 0 0 12px #ff173e;" class="task">';
+                echo '<div class="task priority">';
             } else {
                 echo '<div class="task">';
             }

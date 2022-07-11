@@ -6,7 +6,65 @@
     <?php
         // funciton : getDay() - returns current school day out of 10
         function getDay() {
+            // get term dates and current dates
+            $username = $_SESSION['username'];
+            $termDatesFile = new SplFileObject("data\\users\\$username\\termdates.csv", "r");
+            $termDatesFile->setFlags(SplFileObject::READ_CSV | SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY);
             
+            $termDates = explode(',',$termDatesFile->fgets());
+            $date = date("Y-m-d");
+            $week = date("W");
+            $day = date("w");
+
+            // get term, term start day (of timetable), and term start week (of the year)
+            if ($date >= $termDates[0] && $date <= $termDates[1]) {
+                $termStartDay = $termDates[3];
+                $termStartWeek = date("W", strtotime($termDates[0]));
+            } else if ($date >= $termDates[3] && $date <= $termDates[4]) {
+                $termStartDay = $termDates[5];
+                $termStartWeek = date("W", strtotime($termDates[3]));
+            } else if ($date >= $termDates[6] && $date <= $termDates[7]) {
+                $termStartDay = $termDates[8];
+                $termStartWeek = date("W", strtotime($termDates[6]));
+            } else if ($date >= $termDates[9] && $date <= $termDates[10]) {
+                $termStartDay = $termDates[11];
+                $termStartWeek = date("W", strtotime($termDates[9]));
+            }
+
+            // get week of term
+            $weekOfTerm = $week - $termStartWeek + 1;
+
+            // get week of timetable
+            switch ($termStartDay) {
+                case '1':
+                    if ($weekOfTerm % 2 == 0) {
+                        $timetableWeek = 2;
+                    } else {
+                        $timetableWeek = 1;
+                    }
+                    break;
+
+                case '6':
+                    if ($weekOfTerm % 2 == 0) {
+                        $timetableWeek = 1;
+                    } else {
+                        $timetableWeek = 2;
+                    }
+                    break;
+            }
+
+            // get day of timetable
+            switch ($timetableWeek) {
+                case '1':
+                    $timetableDay = $day;
+                    break;
+
+                case '2':
+                    $timetableDay = $day + 5;
+                    break;
+            }
+
+            return $timetableDay;
         }
 
     ?>
@@ -26,12 +84,6 @@
             </form>
         </div> -->
 
-        <?php 
-            echo '<div style="color: white;">';
-            echo date("H:i");
-            echo '</div>';
-        ?>
-
         <div class="timetable">
             <div class="container">
                 <h3>Week 1</h3>
@@ -41,7 +93,7 @@
                                 echo '<div class="col day'.($i + 1).'">';
                                 echo '<p class="title">Day '.($i + 1).'</p>';
                                 for ($j = 0; $j < 6; $j++) {
-                                    if (($_SESSION['timetable'][$j + 6 * $i][1] < date("H:i") && date("H:i") < $_SESSION['timetable'][$j + 6 * $i][2]) && $i == 0) { // $i == day
+                                    if (($_SESSION['timetable'][$j + 6 * $i][1] <= date("H:i") && date("H:i") <= $_SESSION['timetable'][$j + 6 * $i][2]) && $i == getDay() - 1) {
                                         echo '<div class="row period'.($j + 1).' active">';
                                     } else {
                                         echo '<div class="row period'.($j + 1).'">';
@@ -65,7 +117,11 @@
                             echo '<div class="col day'.($i + 1).'">';
                             echo '<p class="title">Day '.($i + 1).'</p>';
                             for ($j = 0; $j < 6; $j++) {
-                                echo '<div class="row period'.($j + 1).'">';
+                                if (($_SESSION['timetable'][$j + 6 * $i][1] <= date("H:i") && date("H:i") <= $_SESSION['timetable'][$j + 6 * $i][2]) && $i == getDay() - 1) {
+                                    echo '<div class="row period'.($j + 1).' active">';
+                                } else {
+                                    echo '<div class="row period'.($j + 1).'">';
+                                }
                                 echo '<h4>'.$_SESSION['timetable'][$j + 6 * $i][0].'</h4>';
                                 echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][1].' to '. $_SESSION['timetable'][$j + 6 * $i][2].'</p>';
                                 echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][5].'</p>';

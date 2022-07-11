@@ -60,9 +60,12 @@
 
                 // create user file structure
                 mkdir("data\\users\\$username");
+
                 $tasks = fopen("data\\users\\$username\\tasks.csv", "a");
                 $timetable = fopen("data\\users\\$username\\timetable.csv", "a");
                 $events = fopen("data\\users\\$username\\events.csv", "a");
+
+                copy("data\\termDates.csv", "data\\users\\$username\\termDates.csv");
 
                 fclose($tasks);
                 fclose($timetable);
