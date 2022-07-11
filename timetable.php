@@ -4,7 +4,10 @@
     <!-- Page specific code goes here -->
 
     <?php
-
+        // funciton : getDay() - returns current school day out of 10
+        function getDay() {
+            
+        }
 
     ?>
     
@@ -23,6 +26,12 @@
             </form>
         </div> -->
 
+        <?php 
+            echo '<div style="color: white;">';
+            echo date("H:i");
+            echo '</div>';
+        ?>
+
         <div class="timetable">
             <div class="container">
                 <h3>Week 1</h3>
@@ -32,7 +41,11 @@
                                 echo '<div class="col day'.($i + 1).'">';
                                 echo '<p class="title">Day '.($i + 1).'</p>';
                                 for ($j = 0; $j < 6; $j++) {
-                                    echo '<div class="row period'.($j + 1).'">';
+                                    if (($_SESSION['timetable'][$j + 6 * $i][1] < date("H:i") && date("H:i") < $_SESSION['timetable'][$j + 6 * $i][2]) && $i == 0) { // $i == day
+                                        echo '<div class="row period'.($j + 1).' active">';
+                                    } else {
+                                        echo '<div class="row period'.($j + 1).'">';
+                                    }
                                     echo '<h4>'.$_SESSION['timetable'][$j + 6 * $i][0].'</h4>';
                                     echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][1].' to '. $_SESSION['timetable'][$j + 6 * $i][2].'</p>';
                                     echo '<p>'.$_SESSION['timetable'][$j + 6 * $i][5].'</p>';

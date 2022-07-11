@@ -2,7 +2,9 @@
 
 /**
  * CALENDAR
- * this class handles the creation and output of the calendar
+ * this class handles the calendar
+ * attributes include the active year, month and day (active being what is displayed, not the current time)
+ * methods are __construct,  add event and remove event.
  */
 class Calendar {
 
@@ -17,6 +19,10 @@ class Calendar {
 
     public function addEvent($name, $date, $duration = 1, $category, $notes, $type) {
         $this->events[] = [$name, $date, $duration, $category, $notes, $type];
+    }
+
+    public function removeEvent($eventIndex) {
+        unset($this->events[$eventIndex]);
     }
 }
 ?>

@@ -9,6 +9,7 @@ if (isset($_GET["delete"])) {
     unset($_SESSION['tasks'][$_GET['task']]);
     sortTasks();
     saveToFile();
+    header("location: tasks.php");
 }
 
 // EDIT TASK
@@ -17,6 +18,7 @@ if (isset($_GET["change"])) {
     $_SESSION["tasks"][$_GET["taskIndex"]] = $task->asArray();
     sortTasks();
     saveToFile();
+    header("location: tasks.php");
 }
 
 // CREATE TASK
@@ -61,7 +63,7 @@ if (isset($_GET["create"])) {
                 echo '<input type="text" name="subject" id="subject" value="' . $task[3] . '" required><br>';
                 echo '<input type="text" name="notes" id="notes" value="' . $task[4] . '" required><br>';
                 echo '<input type="hidden" name="taskIndex" id="taskIndex" value="' . $taskIndex . '">';
-                echo '<button type="submit" name="change" id="newTask">Confirm</button>';
+                echo '<button type="submit" name="change" id="newTask">Confirm Changes</button>';
                 echo '</form>';
                 echo '</div>';
             } else { // all the other tasks

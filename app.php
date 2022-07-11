@@ -1,5 +1,6 @@
 <?php 
     // INITIATE AND HANDLE SESSIONS
+    date_default_timezone_set('Australia/Melbourne');
     
     if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
