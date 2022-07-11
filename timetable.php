@@ -70,21 +70,7 @@
     ?>
     
     <div class="timetable-container">
-        <!-- <div class="input">
-            <?php echo '<h3 style="margin-bottom: 0.25em;">Enter period '.$i.' details</h3>'; ?>
-            <form method="get">
-                <input type="text" name="subject" id="subject" placeholder="subject" required><br>
-                <input type="text" name="startTime" id="startTime" placeholder="start time" onfocus="(this.type='time')" required><br>
-                <input type="text" name="endTime" id="endTime" placeholder="end time" onfocus="(this.type='time')" required><br>
-                <input type="number" name="period" id="period" placeholder="period" required><br>
-                <input type="number" name="day" id="day" placeholder="day" required><br>
-                <input type="text" name="classroom" id="classroom" placeholder="classroom" required><br>
-                <input type="text" name="teacher" id="teacher" placeholder="teacher" required><br>
-                <button type="submit" name="createPeriod">Create Period</button>
-            </form>
-        </div> -->
-
-        <div class="timetable">
+        <div id="timetable" class="timetable">
             <div class="container">
                 <h3>Week 1</h3>
                 <div class="week">

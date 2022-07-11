@@ -29,18 +29,35 @@
     }
 
 
-    // CHANGE MONTHS
+    // CHANGE MONTHS && TODAY
     if (isset($_GET['month'])) {
         switch ($_GET['month']) {
             case '+1':
-                $_SESSION['month']++;
+                if ($calendar->activeMonth == 12) {
+                    $_SESSION['year']++;
+                    $_SESSION['month'] = 1;
+                } else {
+                    $_SESSION['month']++;
+                }
                 header("location: calendar.php");
                 break;
             case '-1':
-                $_SESSION['month']--;
+                if ($calendar->activeMonth == 1) {
+                    $_SESSION['year']--;
+                    $_SESSION['month'] = 12;
+                } else {
+                    $_SESSION['month']--;
+                }
                 header("location: calendar.php");
                 break;
         }
+    }
+
+    if (isset($_GET["today"])) {
+        $_SESSION['year'] = date("Y");
+        $_SESSION['month'] = date("m");
+        $_SESSION['day'] = date("d");
+        header("location: calendar.php");
     }
 
     // DELETE TASK
@@ -104,6 +121,7 @@
         <div class="heading">
             <h3><?php echo date("F Y", strtotime($calendar->activeYear . '-' . $calendar->activeMonth . '-' . $calendar->activeDay)); ?></h3>
             <div class="buttons">
+                <a href="calendar.php?today="><button style="width: auto; padding: 8px 16px;">Today</button></a>
                 <a href="calendar.php?month=-1"><button><i class="fa-solid fa-angle-left"></button></i></a>
                 <a href="calendar.php?month=+1"><button><i class="fa-solid fa-angle-right"></button></i></a>
             </div>

@@ -66,9 +66,11 @@ nav .icon {
     margin: 16px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .home {
+    flex-basis: 768px;
     padding: 24px;
     margin-bottom: 16px;
 }
@@ -98,6 +100,7 @@ nav .icon {
 
 /* LOGIN & REGISTER */
 .login, .register, .home {
+    flex-basis: 768px;
     padding: 24px;
     margin-bottom: 16px;
     background-color: #EEE;
@@ -232,6 +235,7 @@ nav .icon {
     justify-content: center;
     margin-bottom: 16px;
 }
+
 .timetable .container {
     padding: 24px;
     border: 6px solid aqua;
@@ -285,6 +289,7 @@ nav .icon {
 .wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin: 0 16px 16px 16px;
     gap: 16px;
 }
@@ -310,6 +315,7 @@ nav .icon {
 .calendar .buttons {
     margin-left: auto;
 }
+
 
 .calendar .buttons button {
     background-color: #333;
