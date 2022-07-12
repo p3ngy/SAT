@@ -362,9 +362,8 @@ nav .icon {
     box-shadow: inset 0 0 12px aqua, 3px 5px 10px -3px #000;
 }
 
-.output .period {
+.output .period{
     display: flex;
-    gap: 8px;
     gap: 8px;
     padding: 8px;
     border: 1px solid #ccc;
@@ -372,10 +371,10 @@ nav .icon {
 }
 
 .output .period .data {
-    width: 100px;
+   width: 100px;
 }
 
-.output button {
+.output #create-timetable {
     background-color: #333;
     color: white;
     padding: 1em 2em;
@@ -385,13 +384,33 @@ nav .icon {
     box-sizing: border-box;
 }
 
-.output button a {
+.output #create-timetable a {
     text-decoration: none;
     color: white;
 }
 
-.output button:hover {
+.output #create-timetable:hover {
     background-color: #222;
+}
+
+.output button {
+    color: #333;
+    text-decoration: none;
+    border: 0;
+    background-color: none;
+}
+
+.output button:hover {
+    color: aqua;
+    text-shadow: 0 0 12px aqua;
+}
+
+.output input {
+    background-color: white;
+    padding: 0.25em;
+    border: 1px solid #ccc;
+    border-style: hidden hidden solid hidden;
+    box-sizing: border-box;
 }
 
 /* CALENDAR */

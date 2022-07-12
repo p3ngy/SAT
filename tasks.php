@@ -47,44 +47,24 @@ if (isset($_GET["create"])) {
     foreach ($_SESSION['tasks'] as $task) {
         $taskIndex = array_search($task, $_SESSION['tasks']);
 
-        if (isset($_GET['edit'])) { 
-            // runs if user wants to edit a task
-            if ($taskIndex == $_GET["task"]) { // the task being edited
-                if ($task[2] == 1) { // red border for high priority tasks
-                    echo '<div class="task priority">';
-                } else {
-                    echo '<div class="task">';
-                }
-                echo '<h3 style="margin-bottom: 0.25em;">Edit Task:</h3>';
-                echo '<form method="get">';
-                echo '<input type="text" name="name" id="name" value="' . $task[0] . '" required><br>';
-                echo '<input type="date" name="dueDate" id="dueDate" value="' . $task[1] . '" required><br>';
-                echo '<input type="number" name="priority" id="priority" min="1" max="5" value="' . $task[2] . '"<br>';
-                echo '<input type="text" name="subject" id="subject" value="' . $task[3] . '" required><br>';
-                echo '<input type="text" name="notes" id="notes" value="' . $task[4] . '" required><br>';
-                echo '<input type="hidden" name="taskIndex" id="taskIndex" value="' . $taskIndex . '">';
-                echo '<button type="submit" name="change" id="newTask">Confirm Changes</button>';
-                echo '</form>';
-                echo '</div>';
-            } else { // all the other tasks
-                if ($task[2] == 1) {
-                    echo '<div class="task priority">';
-                } else {
-                    echo '<div class="task">';
-                }
-                echo '<h3>' . $task[0] . '</h3><br>';
-                echo '<p><em>Due date: </em>' . (new DateTime($task[1]))->format("d/m/y") . '</p><br>';
-                echo '<p id="priority"><em>Priority: </em>' . $task[2] . '</p><br>';
-                echo '<p><em>Subject: </em>' . $task[3] . '</p><br>';
-                echo '<p><em>Notes: </em>' . $task[4] . '</p><br>';
-                echo '<div id="icons">';
-                echo '<a href="tasks.php?task=' . $taskIndex . '&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
-                echo '<a href="tasks.php?task=' . $taskIndex . '&delete="><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
-                echo '</div>';
-                echo '<div class="triangle"></div>';
-                echo '</div>';
+        if (isset($_GET['edit']) && $taskIndex == $_GET["task"]) { // find task being edited
+            if ($task[2] == 1) { // red border for high priority tasks
+                echo '<div class="task priority">';
+            } else {
+                echo '<div class="task">';
             }
-        } else { // runs if no edits are being made
+            echo '<h3 style="margin-bottom: 0.25em;">Edit Task:</h3>';
+            echo '<form method="get">';
+            echo '<input type="text" name="name" id="name" value="' . $task[0] . '" required><br>';
+            echo '<input type="date" name="dueDate" id="dueDate" value="' . $task[1] . '" required><br>';
+            echo '<input type="number" name="priority" id="priority" min="1" max="5" value="' . $task[2] . '"<br>';
+            echo '<input type="text" name="subject" id="subject" value="' . $task[3] . '" required><br>';
+            echo '<input type="text" name="notes" id="notes" value="' . $task[4] . '" required><br>';
+            echo '<input type="hidden" name="taskIndex" id="taskIndex" value="' . $taskIndex . '">';
+            echo '<button type="submit" name="change" id="newTask">Confirm Changes</button>';
+            echo '</form>';
+            echo '</div>';
+        } else { // tasks not being edited
             if ($task[2] == 1) {
                 echo '<div class="task priority">';
             } else {
@@ -103,6 +83,7 @@ if (isset($_GET["create"])) {
             echo '</div>';
         }
     }
+    
     ?>
 </div>
 
