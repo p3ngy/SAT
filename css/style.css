@@ -507,7 +507,14 @@ nav .icon {
 
 .events {
     display: flex;
+    flex-direction: column;
     gap: 16px;
+}
+
+@media screen and (max-width: 1800px) {
+    .events {
+        flex-direction: row;
+    }
 }
 
 .new-event {

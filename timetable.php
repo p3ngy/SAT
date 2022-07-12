@@ -1,15 +1,5 @@
 <?php $title = "Create Timetable"; ?>
 <?php include("templates\\head.php"); ?>
-
-    <!--
-
-    # TODO
-
-    -- 1. add ability to edit tmp timetable -- done
-    2. mk sort function to sort by day and period
-    3. validate timetable data (check 60 periods, unique days and periods etc) 
-
-    -->
     
     <!-- Page specific code goes here -->
 
