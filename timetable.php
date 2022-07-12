@@ -120,10 +120,9 @@
                         </form>
                     </div>
                     <div class="output">';
-                        foreach($_SESSION['tmp_timetable'] as $period) {
-                            // output tmp timetable
-                            // edit periods
-                        }
+                        echo '<pre style="color:white;">';
+                        print_r($_SESSION['tmp_timetable']);
+                        echo '</pre>';
             echo '
                     </div>
                 </div>

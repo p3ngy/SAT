@@ -18,14 +18,14 @@ class Period {
     public $teacher;
     
     //methods
-    public function __construct($data) {
-        $this->subject = $data["subject"];
-        $this->startTime = $data["startTime"];
-        $this->endTime = $data["endTime"];
-        $this->period = $data["period"];
-        $this->day = $data["day"];
-        $this->classroom = $data["classroom"];
-        $this->teacher = $data["teacher"];
+    public function __construct($subject, $startTime, $endTime, $period, $day, $classroom, $teacher) {
+        $this->subject = $subject;
+        $this->startTime = $startTime;
+        $this->endTime = $endTime;
+        $this->period = $period;
+        $this->day = $day;
+        $this->classroom = $classroom;
+        $this->teacher = $teacher;
     }
 
     // asArray() : exports the class properties as an array

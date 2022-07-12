@@ -289,7 +289,7 @@ nav .icon {
 }
 
 .hidden {
-    display: none;
+    display: none !important; 
 }
 
 .create-timetable {
@@ -350,6 +350,14 @@ nav .icon {
     background-color: #222;
 }
 
+.output {
+    display: flex;
+    flex-direction: column;
+}
+
+.output .period {
+    display: flex;
+}
 /* CALENDAR */
 .wrapper {
     display: flex;
