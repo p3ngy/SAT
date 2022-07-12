@@ -29,7 +29,7 @@
     }
 
 
-    // CHANGE MONTHS && TODAY
+    // CHANGE THROUGH MONTHS
     if (isset($_GET['month'])) {
         switch ($_GET['month']) {
             case '+1':
@@ -53,6 +53,7 @@
         }
     }
 
+    // GOTO TODAY
     if (isset($_GET["today"])) {
         $_SESSION['year'] = date("Y");
         $_SESSION['month'] = date("m");
@@ -238,7 +239,7 @@
                                     echo '<a href="calendar.php?event=' . $_GET['event'] . '&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
                                     echo '<a href="calendar.php?event=' . $_GET['event'] . '&delete="><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
                                 echo '</div>';
-                                echo '<div id="triangle"></div>';
+                                echo '<div class="triangle"></div>';
 
                                 break;
                             
@@ -252,13 +253,13 @@
                                     echo '<a href="calendar.php?event=' . $_GET['event'] . '&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
                                     echo '<a href="calendar.php?event=' . $_GET['event'] . '&delete="><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
                                 echo '</div>';
-                                echo '<div id="triangle"></div>';
+                                echo '<div class="triangle"></div>';
                                 break;
                         }
                     }
                 } else {
                     echo '<h3>Click on a task or event to view its details.</h3>';
-                    echo '<div id="triangle"></div>';
+                    echo '<div class="triangle"></div>';
                 }
             ?>
         </div>

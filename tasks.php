@@ -81,7 +81,7 @@ if (isset($_GET["create"])) {
                 echo '<a href="tasks.php?task=' . $taskIndex . '&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
                 echo '<a href="tasks.php?task=' . $taskIndex . '&delete="><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
                 echo '</div>';
-                echo '<div id="triangle"></div>';
+                echo '<div class="triangle"></div>';
                 echo '</div>';
             }
         } else { // runs if no edits are being made
@@ -99,7 +99,7 @@ if (isset($_GET["create"])) {
             echo '<a href="tasks.php?task=' . $taskIndex . '&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a>';
             echo '<a href="tasks.php?task=' . $taskIndex . '&delete="><button><i class="fa-solid fa-trash fa-xl"></i></button></a>';
             echo '</div>';
-            echo '<div id="triangle"></div>';
+            echo '<div class="triangle"></div>';
             echo '</div>';
         }
     }

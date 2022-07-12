@@ -13,7 +13,7 @@
             <p>There is also a calendar where you can setup your timetable and other events.</p>
             <br>
             <p>Login or create an account to be more productive today!</p>
-            <div id="triangle"></div>
+            <div class="triangle"></div>
         </div>
         <?php 
             if (empty($_SESSION['username'])) { // if logged in

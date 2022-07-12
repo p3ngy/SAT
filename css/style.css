@@ -215,7 +215,7 @@ nav .icon {
     box-shadow: inset 0 0 12px #ff173e;
 }
 
-#triangle {
+.triangle {
     width: 0;
     height: 0;
     right: 0;
@@ -226,14 +226,17 @@ nav .icon {
 }
 
 /* TIMETABLE */
+.timetable-container {
+    margin: 0 16px;
+    margin-bottom: 16px;
+}
+
 .timetable {
     color: #222;
-    margin: 0 16px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
-    margin-bottom: 16px;
 }
 
 .timetable .container {
@@ -283,6 +286,68 @@ nav .icon {
     .timetable .row {
         height: 125px;
     }
+}
+
+.hidden {
+    display: none;
+}
+
+.create-timetable {
+    display: flex;
+    gap: 16px;
+}
+
+.instructions {
+    color: #222;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(255, 250, 185);
+    padding: 24px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 3px 5px 10px -3px #000;
+}
+
+.instructions ol {
+    margin-left: 1rem;
+}
+
+.new-period {
+    color: #222;  
+    width: 400px;
+    height: 400px;
+    background-color: rgb(255, 250, 185);
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: 3px 5px 10px -3px #000;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.new-period input {
+    width: 100%;
+    margin: 0.25em 0;
+    padding: 0.5em;
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+    border-style: hidden hidden solid hidden;
+    box-sizing: border-box;
+    background-color: #FFF;
+}
+
+.new-period #new-period {
+    width: 352px;
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    border: none;
+    box-sizing: border-box;
+    bottom: 24px;
+    position: absolute;
+}
+
+.new-period #new-period:hover {
+    background-color: #222;
 }
 
 /* CALENDAR */

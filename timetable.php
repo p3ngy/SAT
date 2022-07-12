@@ -4,6 +4,22 @@
     <!-- Page specific code goes here -->
 
     <?php
+        if (empty($_SESSION['timetable'])) {
+            if(!isset($_SESSION['tmp_timetable'])) {
+                $_SESSION['tmp_timetable'] = [];
+            }
+        }
+         
+        // CREATE PERIOD
+        if (isset($_GET['createPeriod'])) {
+            $period = new Period($_GET['subject'], $_GET['startTime'], $_GET['endTime'], $_GET['period'], $_GET['day'], $_GET['classroom'], $_GET['teacher']);
+            $_SESSION['tmp_timetable'][] = $period->asArray();
+            header("location: timetable.php");
+        }
+
+        // once all periods have been added and edited :
+        // if(isset($_GET["createtimetable"]).....
+
         // funciton : getDay() - returns current school day out of 10
         function getDay() {
             // get term dates and current dates
@@ -70,7 +86,56 @@
     ?>
     
     <div class="timetable-container">
-        <div id="timetable" class="timetable">
+        <?php
+
+        if (empty($_SESSION['timetable'])) {
+            echo '
+                <div class="create-timetable">
+                    <div class="instructions">
+                        <h3 style="margin-bottom: 0.25em;">Create your timetable!</h3>
+                        <p>In order to use the timetable functionality, you must first enter in all of your timetable details.</p>
+                        <br>
+                        <p>To do so, follow these steps:</p>
+                        <br>
+                        <ol>
+                            <li>Enter subjects in order from period 1 day 1, period 2 day 1, etc... all the way through to period 6 day 10.</li>
+                            <br>
+                            <li>Enter the subject\'s name, the start and end time of the period, the period number, the day of the timetable (1 - 10), the classroom, and the teacher.</li>
+                            <br>
+                            <li>Once complete, edit any mistakes and then click \'Create Timetable\'.</li>
+                        </ol>
+                        <div class="triangle"></div>
+                    </div>
+                    <div class="new-period">
+                    <h3 style="margin-bottom: 0.25em;">Create Timetable:</h3>
+                        <form method="get">
+                            <input type="text" name="subject" id="subject" placeholder="Subject Name"><br>
+                            <input type="text" name="startTime" placeholder="Start Time" id="startTime" onfocus="(this.type=\'time\')"><br>
+                            <input type="text" name="endTime" placeholder="End Time" id="endTime" onfocus="(this.type=\'time\')"> <br>
+                            <input type="number" name="period" id="period" placeholder="Period"><br>
+                            <input type="number" name="day" id="day" placeholder="Day"><br>
+                            <input type="text" name="classroom" id="classroom" placeholder="Classroom"><br>
+                            <input type="text" name="teacher" id="teacher" placeholder="Teacher"><br>
+                            <button type="create" name="createPeriod" id="new-period">Add new Period</button>
+                        </form>
+                    </div>
+                    <div class="output">';
+                        foreach($_SESSION['tmp_timetable'] as $period) {
+                            // output tmp timetable
+                            // edit periods
+                        }
+            echo '
+                    </div>
+                </div>
+            ';
+            
+
+            echo '<div id="timetable" class="timetable hidden">';
+        } else {
+            echo '<div id="timetable" class="timetable">';
+        }
+
+        ?>
             <div class="container">
                 <h3>Week 1</h3>
                 <div class="week">

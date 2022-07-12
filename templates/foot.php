@@ -9,14 +9,5 @@
                 x.className = "nav";
             }
         }
-
-        function showTimetable() {
-            var x = document.getElementById("timetable");
-            if (x.style.display === "flex") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "flex";
-            }
-        }
     </script>
 </html>
