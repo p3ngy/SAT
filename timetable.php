@@ -17,8 +17,12 @@
             header("location: timetable.php");
         }
 
-        // once all periods have been added and edited :
-        // if(isset($_GET["createtimetable"]).....
+        // once all periods have been added and edited create timetable
+        if(isset($_GET["createTimetable"])) {
+            $_SESSION['timetable'] = $_SESSION['tmp_timetable'];
+            saveToFile();
+            header("location: timetable.php");
+        }
 
         // funciton : getDay() - returns current school day out of 10
         function getDay() {
@@ -119,11 +123,30 @@
                             <button type="create" name="createPeriod" id="new-period">Add new Period</button>
                         </form>
                     </div>
-                    <div class="output">';
-                        echo '<pre style="color:white;">';
-                        print_r($_SESSION['tmp_timetable']);
-                        echo '</pre>';
+                    <div class="output">
+                        <div class="italic period">
+                        <div class="italic data">subject</div>
+                        <div class="italic data">start time</div>
+                        <div class="italic data">end time</div>
+                        <div class="italic data">period</div>
+                        <div class="italic data">day</div>
+                        <div class="italic data">classroom</div>
+                        <div class="italic data">teacher</div>
+                        </div>';
+
+                        foreach($_SESSION['tmp_timetable'] as $period) {
+                            echo '<div class="period">';
+                            echo '<div class="data">'.$period[0].'</div>';
+                            echo '<div class="data">'.$period[1].'</div>';
+                            echo '<div class="data">'.$period[2].'</div>';
+                            echo '<div class="data">'.$period[3].'</div>';
+                            echo '<div class="data">'.$period[4].'</div>';
+                            echo '<div class="data">'.$period[5].'</div>';
+                            echo '<div class="data">'.$period[6].'</div>';
+                            echo '</div>';
+                        }
             echo '
+                        <button><a href="timetable.php?createTimetable=">Create Timetable</a></button>
                     </div>
                 </div>
             ';
