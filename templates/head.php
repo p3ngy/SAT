@@ -10,16 +10,23 @@
     <meta charset="utf-8">
     <title>MGSP <?php if (isset($title)) { echo "| " . $title; } ?></title>
     <link rel="stylesheet" href="css\\style.css">
+    <link rel="icon" href="favicon.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/dace878f3d.js" crossorigin="anonymous"></script>
     <?php
 
     // SORT TASKS BY PRIORITY
     function sortTasks() {
         usort($_SESSION['tasks'], function ($a, $b) {
-            return $a[2] <=> $b[2];
+            return $a[2] <=> $b[2]; // <=> spaceship operator php.net/manual/en/language.operators.comparison.php
         });
     }
-
+    
+    // SORT TIMETABLE BY DAYS AND PERIODS
+    function sortPeriods() {
+        usort($_SESSION['tmp_timetable'], function ($a, $b) {
+            return ($a[4].$a[3]) <=> ($b[4].$b[3]);
+        });
+    }
 
     // SAVE AND LOAD ARRAYS TO AND FROM CSV FILES
     function saveToFile() {

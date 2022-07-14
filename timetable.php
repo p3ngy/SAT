@@ -4,6 +4,18 @@
     <!-- Page specific code goes here -->
 
     <?php
+
+        function createTestTimetable() {
+            $p = 1;
+            $d = 1;
+            for ($i = 0; $i < 60; $i++) {
+                
+                $period = new Period("p$i", "0$i:00", "0".($i+1).":00", $p, $d, "T001", "Mx. Test");
+                $_SESSION['tmp_timetable'][] = $period->asArray();
+                sortPeriods();
+            }
+        }
+
         if (empty($_SESSION['timetable'])) {
             if(!isset($_SESSION['tmp_timetable'])) {
                 $_SESSION['tmp_timetable'] = [];
@@ -12,8 +24,10 @@
          
         // CREATE PERIOD
         if (isset($_GET['createPeriod'])) {
+            $_SESSION['err'] = '';
             $period = new Period($_GET['subject'], $_GET['startTime'], $_GET['endTime'], $_GET['period'], $_GET['day'], $_GET['classroom'], $_GET['teacher']);
             $_SESSION['tmp_timetable'][] = $period->asArray();
+            sortPeriods();
             header("location: timetable.php");
         }
 
@@ -21,13 +35,18 @@
         if (isset($_GET['editPeriod'])) {
             $period = new Period($_GET['subject'], $_GET['startTime'], $_GET['endTime'], $_GET['period'], $_GET['day'], $_GET['classroom'], $_GET['teacher']);
             $_SESSION['tmp_timetable'][$_GET['periodIndex']] = $period->asArray();
+            sortPeriods();
             header("location: timetable.php");
         }
 
         // once all periods have been added and edited create timetable
         if(isset($_GET["createTimetable"])) {
-            $_SESSION['timetable'] = $_SESSION['tmp_timetable'];
-            saveToFile();
+            if (count($_SESSION['tmp_timetable']) == 60) { // are all periods in the timetable entered?
+                $_SESSION['timetable'] = $_SESSION['tmp_timetable'];
+                saveToFile();
+            } else {
+                $_SESSION['err'] = 'Please make sure to enter all of your periods before submitting your timetable.';
+            }
             header("location: timetable.php");
         }
 
@@ -113,7 +132,7 @@
             <p>To do so, follow these steps:</p>
             <br>
             <ol>
-                <li>Enter subjects in order from period 1 day 1, period 2 day 1, etc... all the way through to period 6 day 10.</li>
+                <li>Enter subjects in order from period 1 day 1, through to period 6 day 10.</li>
                 <br>
                 <li>Enter the subject's name, the start and end time of the period, the period number, the day of the timetable (1 - 10), the classroom, and the teacher.</li>
                 <br>
@@ -127,9 +146,9 @@
                 <input type="text" name="subject" id="subject" placeholder="Subject Name"><br>
                 <input type="text" name="startTime" placeholder="Start Time" id="startTime" onfocus="(this.type='time')"><br>
                 <input type="text" name="endTime" placeholder="End Time" id="endTime" onfocus="(this.type='time')"> <br>
-                <input type="number" name="period" id="period" placeholder="Period"><br>
-                <input type="number" name="day" id="day" placeholder="Day"><br>
-                <input type="text" name="classroom" id="classroom" placeholder="Classroom"><br>
+                <input type="number" name="period" id="period" min="1" max="6" placeholder="Period (1 - 6)"><br>
+                <input type="number" name="day" id="day" min="1" max="10" placeholder="Day (1 - 10)"><br>
+                <input type="text" name="classroom" id="classroom" pattern="([A-Z])\d\d\d" placeholder="Classroom (A001)"><br>
                 <input type="text" name="teacher" id="teacher" placeholder="Teacher"><br>
                 <button type="create" name="createPeriod" id="new-period">Add new Period</button>
             </form>
@@ -145,7 +164,7 @@
             <div class="italic data">teacher</div>
             <div class="italic data">edit</div>
             </div>
-        <?php
+            <?php
             foreach($_SESSION['tmp_timetable'] as $period) {
                 $periodIndex = array_search($period, $_SESSION['tmp_timetable']);
 
@@ -154,9 +173,9 @@
                     echo '<input class="data" type="text" name="subject" id="subject" value="'.$period[0].'">';
                     echo '<input class="data" type="time" name="startTime" id="startTime" value="'.$period[1].'">';
                     echo '<input class="data" type="time" name="endTime" id="endTime" value="'.$period[2].'">';
-                    echo '<input class="data" type="number" name="period" id="period" value="'.$period[3].'">';
-                    echo '<input class="data" type="number" name="day" id="day" value="'.$period[4].'">';
-                    echo '<input class="data" type="text" name="classroom" id="classroom" value="'.$period[5].'">';
+                    echo '<input class="data" type="number" name="period" id="period" min="1" max="6" value="'.$period[3].'">';
+                    echo '<input class="data" type="number" name="day" id="day" min="1" max="10" value="'.$period[4].'">';
+                    echo '<input class="data" type="text" name="classroom" pattern="([A-Z])\d\d\d" id="classroom" value="'.$period[5].'">';
                     echo '<input class="data" type="text" name="teacher" id="teacher" value="'.$period[6].'">';
                     echo '<input type="hidden" name="periodIndex" id="periodIndex" value="'.$periodIndex.'">';
                     echo '<button type="submit" name="editPeriod"><i class="fa-solid fa-circle-check fa-xl"></i></button>';
@@ -174,11 +193,14 @@
                     echo '</div>';
                 }  
             }
-        ?>
+
+            if (!empty($_SESSION['err'])) {
+                echo '<div class="period">'.$_SESSION['err'].'</div>';
+            }
+            ?>
                 <button id="create-timetable"><a href="timetable.php?createTimetable=">Create Timetable</a></button>
             </div>
-        </div>
-            
+        </div>            
             
         <?php
         if (empty($_SESSION['timetable'])) {
