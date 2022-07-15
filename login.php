@@ -2,7 +2,7 @@
 
 <?php
     include("app.php");
-    if(isset($_GET['login'])) {
+    if(isset($_POST['login'])) {
 
         /**
          * LOGIN
@@ -13,8 +13,8 @@
          */
 
         $error = null;
-        $username = $_GET['username'];
-        $pw = $_GET['password'];
+        $username = $_POST['username'];
+        $pw = $_POST['password'];
 
         // check if username exists
         $file = new SplFileObject("data\\users.csv");
@@ -49,7 +49,7 @@
     }
 ?>
 
-    <form method="$_GETpost">
+    <form method="post">
         <h3>Login</h3>
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" placeholder="username" required>

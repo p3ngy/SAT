@@ -5,17 +5,6 @@
 
     <?php
 
-        function createTestTimetable() {
-            $p = 1;
-            $d = 1;
-            for ($i = 0; $i < 60; $i++) {
-                
-                $period = new Period("p$i", "0$i:00", "0".($i+1).":00", $p, $d, "T001", "Mx. Test");
-                $_SESSION['tmp_timetable'][] = $period->asArray();
-                sortPeriods();
-            }
-        }
-
         if (empty($_SESSION['timetable'])) {
             if(!isset($_SESSION['tmp_timetable'])) {
                 $_SESSION['tmp_timetable'] = [];

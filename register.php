@@ -7,7 +7,7 @@
     <?php
         // handle registration form submission
 
-        if(isset($_GET['register'])) {
+        if(isset($_POST['register'])) {
             /**
              * REGISTER
              * get inputs
@@ -23,9 +23,9 @@
              */
 
             $error = null;
-            $username = $_GET['username'];
-            $pw1 = $_GET['password'];
-            $pw2 = $_GET['password2'];
+            $username = $_POST['username'];
+            $pw1 = $_POST['password'];
+            $pw2 = $_POST['password2'];
 
             if ($pw1 != $pw2) {
                 $error = "Passwords do not match.";
@@ -77,7 +77,7 @@
         }
     ?>
 
-        <form>
+        <form method="post">
             <h3>Register</h3>
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" placeholder="username" required>
