@@ -6,7 +6,6 @@
 
     <?php
         // handle registration form submission
-
         if(isset($_POST['register'])) {
             /**
              * REGISTER
@@ -23,12 +22,26 @@
              */
 
             $error = null;
-            $username = $_POST['username'];
-            $pw1 = $_POST['password'];
-            $pw2 = $_POST['password2'];
 
-            if ($pw1 != $pw2) {
-                $error = "Passwords do not match.";
+            if (isset($_POST['username'])) {
+                $username = $_POST['username'];
+            }
+
+            // validate passowrds
+            if (!empty($_POST['password']) && !empty($_POST['password2'])) {
+                if ($_POST['password'] === $_POST['password2']) {
+                    if (8 <= strlen($_POST['password']) && strlen($_POST['password']) <= 16) {
+                        $pw1 = $_POST['password'];
+                        $pw2 = $_POST['password2']; 
+                    } else {
+                        $error = "password must be between 8 and 16 characters";
+                    }
+                    
+                } else {
+                    $error = 'passwords do not match';
+                }
+            } else {
+                $error = "please enter both passwords";
             }
 
             if (empty($error)) {
@@ -82,9 +95,9 @@
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" placeholder="username" required>
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="password" required>
+            <input type="password" name="password" id="password" placeholder="password (8 - 16 characters)" pattern=".{8,16}" required>
             <label for="password2">Re-enter password:</label>
-            <input type="password" name="password2" id="password2" placeholder="re-enter password" required>
+            <input type="password" name="password2" id="password2" placeholder="re-enter password" pattern=".{8,16}" required>
             <button type="submit" name="register">Register</button>
             <br><br>
             <p>Already have an account? <a href="index.php">Login</a> now!</p>
