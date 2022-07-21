@@ -24,7 +24,7 @@
         $error = null;
 
         // validate username
-        if (isset($_POST['username'])) {
+        if (!empty($_POST['username'])) {
             // check if username already exists
             $file = new SplFileObject("data\\users.csv", "r");
             $file->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY);
@@ -42,6 +42,8 @@
                 break;
             }
             $file = null;
+        } else {
+            $error = "Please enter a username";
         }
 
         // validate passowrds
@@ -65,6 +67,7 @@
             $file = new SplFileObject("data\\users.csv", "a");
             $file->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY);
 
+            // put details in users file
             $file->fputcsv(array(
                 $username,
                 password_hash($pw1, PASSWORD_DEFAULT)
