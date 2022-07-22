@@ -54,9 +54,11 @@
     <form method="post">
         <h3>Login</h3>
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username" placeholder="username" required>
+        <!-- <input type="text" name="username" id="username" placeholder="username" required> -->
+        <input type="text" name="username" id="username" placeholder="username">
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" placeholder="password" required>
+        <!-- <input type="password" name="password" id="password" placeholder="password" required> -->
+        <input type="password" name="password" id="password" placeholder="password">
         <button type="submit" name="login">Login</button>
         <br><br>
         <p>Don't have an account? <a href="register.php">Register</a> now!</p>

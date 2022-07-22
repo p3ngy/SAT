@@ -14,21 +14,30 @@
     <script src="https://kit.fontawesome.com/dace878f3d.js" crossorigin="anonymous"></script>
     <?php
 
-    // SORT TASKS BY PRIORITY
+    // SORT TASK ARRAY BY PRIORITY
     function sortTasks() {
         usort($_SESSION['tasks'], function ($a, $b) {
-            return $a[2] <=> $b[2]; // <=> spaceship operator php.net/manual/en/language.operators.comparison.php
+            return $a[2] <=> $b[2]; // <=> spaceship operator - php.net/manual/en/language.operators.comparison.php
         });
+
+        foreach($_SESSION['tasks'] as $taskIndex=>$task) {
+            if (empty($task[2])) {
+                $tmp_task = $task;
+                unset($_SESSION['tasks'][$taskIndex]);
+                $_SESSION['tasks'][] = $tmp_task;
+            }
+        }
     }
     
-    // SORT TIMETABLE BY DAYS AND PERIODS
+    // SORT TIMETABLE ARRAY BY DAYS AND PERIODS
     function sortPeriods() {
         usort($_SESSION['tmp_timetable'], function ($a, $b) {
             return ($a[4].$a[3]) <=> ($b[4].$b[3]);
         });
     }
 
-    // SAVE AND LOAD ARRAYS TO AND FROM CSV FILES
+    // SAVE SESSION ARRAYS TO CSV
+    // save user tasks, events and timetable session arrays to their csv file
     function saveToFile() {
         $username = $_SESSION['username'];
         $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "w");
@@ -58,6 +67,8 @@
         
     }
 
+    // LOAD FILE DATA INTO SESSION ARRAYS
+    // load user task, timetable and event data into session arrays
     function loadFromFile() {
         $username = $_SESSION['username'];
         $tasksFile = new SplFileObject("data\\users\\$username\\tasks.csv", "r");
