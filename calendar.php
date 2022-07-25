@@ -185,11 +185,11 @@
         <div class="new-event">
             <h3 style="margin-bottom: 0.25em;">New Event:</h3>
             <form method="get">
-                <input type="text" name="name" id="name" placeholder="Task Name"><br>
-                <input type="text" name="startDateTime" placeholder="Date" id="startDateTime" onfocus="(this.type='datetime-local')"><br>
-                <input type="number" name="duration" id="duration" placeholder="Duration"> <br>
-                <input type="text" name="category" id="category" placeholder="category"><br>
-                <input type="text" name="notes" id="notes" placeholder="notes"><br>
+                <input type="text" name="name" id="name" placeholder="Task Name" required><br>
+                <input type="text" name="startDateTime" placeholder="Date" id="startDateTime" onfocus="(this.type='datetime-local')" required><br>
+                <input type="number" name="duration" id="duration" placeholder="Duration" required> <br>
+                <input type="text" name="category" id="category" placeholder="category" required><br>
+                <input type="text" name="notes" id="notes" placeholder="notes" required><br>
                 <button type="create" name="createEvent" id="new-event">Create new event</button>
             </form>
         </div>
