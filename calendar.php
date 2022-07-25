@@ -4,7 +4,7 @@
     <!-- Page specific code goes here -->
 
     <?php
-    $calendar = new Calendar(date($_SESSION['year'] . '-' . $_SESSION['month'] . '-' . $_SESSION['day']));
+    $calendar = new Calendar(date($_SESSION['year'].'-'.$_SESSION['month'].'-'.$_SESSION['day']));
 
     $daysInMonth = date('t', strtotime($calendar->activeDay . '-' . $calendar->activeMonth . '-' . $calendar->activeYear));
     $daysLastMonth = date('j', strtotime('last day of previous month', strtotime($calendar->activeDay . '-' . $calendar->activeMonth . '-' . $calendar->activeYear)));
@@ -145,7 +145,7 @@
                 ';
             }
             for ($i = 1; $i <= $daysInMonth; $i++) {
-                $selected = '';
+                $selected = ''; // highlight current day
                 if ($i == $calendar->activeDay && $calendar->activeMonth == date("m")) {
                     $selected = ' selected';
                 }
@@ -154,14 +154,14 @@
                 foreach ($calendar->events as $event) {
                     $eventIndex = array_search($event, $calendar->events);
                     if ( $event[5] == 'event' ) {
-                        for ($d = 0; $d <= ($event[2] - 1); $d++) {
+                        for ($d = 0; $d <= ($event[2] - 1); $d++) { // if event is an event (not task) output x times based on duration
                             if (date('y-m-d', strtotime($calendar->activeYear . '-' . $calendar->activeMonth . '-' . $i . ' -' . $d . ' day')) == date('y-m-d', strtotime($event[1]))) {
                                 echo  '<a href="calendar.php?event=' . $eventIndex . '"><div class="event ' . $event[3] . '">';
                                 echo  $event[0];
                                 echo  '</div></a>';
                             }
                         }
-                    } else {
+                    } else { // output only once if event type is task
                         if (date('y-m-d', strtotime($calendar->activeYear . '-' . $calendar->activeMonth . '-' . $i )) == date('y-m-d', strtotime($event[1]))) {
                             echo  '<a href="calendar.php?event=' . $eventIndex . '"><div class="event ' . $event[3] . '">';
                             echo  $event[0];

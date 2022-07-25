@@ -400,9 +400,14 @@ nav .icon {
     background-color: none;
 }
 
-.output button:hover {
+.output .fa-pen:hover, .output .fa-circle-check:hover {
     color: aqua;
     text-shadow: 0 0 12px aqua;
+}
+
+.output .fa-trash:hover {
+    color: #ff173e; 
+    text-shadow: 0 0 12px #ff173e;
 }
 
 .output input {

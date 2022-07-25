@@ -20,6 +20,13 @@
             header("location: timetable.php");
         }
 
+        // DELETE PERIOD
+        if (isset($_GET['deletePeriod'])) {
+            unset($_SESSION['tmp_timetable'][$_GET['period']]);
+            sortPeriods();
+            header("location: timetable.php");
+        }
+
         // EDIT PERIOD
         if (isset($_GET['editPeriod'])) {
             $period = new Period($_GET['subject'], $_GET['startTime'], $_GET['endTime'], $_GET['period'], $_GET['day'], $_GET['classroom'], $_GET['teacher']);
@@ -33,8 +40,8 @@
             if (count($_SESSION['tmp_timetable']) == 60) { // are all periods in the timetable entered?
                 $_SESSION['timetable'] = $_SESSION['tmp_timetable'];
                 saveToFile();
-            } else {
-                $_SESSION['err'] = 'Please make sure to enter all of your periods before submitting your timetable.';
+            } else  {
+                $_SESSION['err'] = 'Please make sure to enter the correct amount of periods before submitting your timetable.';
             }
             header("location: timetable.php");
         }
@@ -105,6 +112,10 @@
     ?>
     
     <div class="timetable-container">
+
+
+        <!-- NEW TIMETABLE FORM -->
+
         <?php
 
         if (empty($_SESSION['timetable'])) {
@@ -152,6 +163,7 @@
             <div class="italic data">classroom</div>
             <div class="italic data">teacher</div>
             <div class="italic data">edit</div>
+            <div class="italic data">delete</div>
             </div>
             <?php
             foreach($_SESSION['tmp_timetable'] as $period) {
@@ -178,7 +190,8 @@
                     echo '<div class="data">'.$period[4].'</div>';
                     echo '<div class="data">'.$period[5].'</div>';
                     echo '<div class="data">'.$period[6].'</div>';
-                    echo '<div><a href="timetable.php?period='.$periodIndex.'&edit="><button><i class="fa-solid fa-pen fa-xl"></i></button></a></div>';
+                    echo '<div><a href="timetable.php?period='.$periodIndex.'&edit="><button><i class="data fa-solid fa-pen fa-xl"></i></button></a></div>';
+                    echo '<div><a href="timetable.php?period='.$periodIndex.'&deletePeriod="><button><i class="data fa-solid fa-trash fa-xl"></i></button></a></div>';
                     echo '</div>';
                 }  
             }
@@ -190,6 +203,11 @@
                 <button id="create-timetable"><a href="timetable.php?createTimetable=">Create Timetable</a></button>
             </div>
         </div>            
+
+
+
+
+        <!-- ACTUAL TIMETABLE -->
             
         <?php
         if (empty($_SESSION['timetable'])) {
