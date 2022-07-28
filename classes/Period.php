@@ -9,13 +9,13 @@
 
 class Period {
     //properties
-    public $subject;
-    public $startTime;
-    public $endTime;
-    public $period;
-    public $day; // day 1-10 with the 14day timetable
-    public $classroom;
-    public $teacher;
+    public $subject;    // 0
+    public $startTime;  // 1
+    public $endTime;    // 2
+    public $period;     // 3
+    public $day;        // 4 : day 1-10 with the 14day timetable
+    public $classroom;  // 5
+    public $teacher;    // 6
     
     //methods
     public function __construct($subject, $startTime, $endTime, $period, $day, $classroom, $teacher) {
